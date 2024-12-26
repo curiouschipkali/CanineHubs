@@ -35,13 +35,17 @@ ul {
 }
 
 /* Header */
+@import url('https://fonts.googleapis.com/css2?family=Whisper&display=swap');
+
+/* Header Styles */
 .header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 15px 5%;
-  background: #004d40;
-  color: #fff;
+  padding: 20px 5%;
+  background: #F5EFFF; /* Lightest purple from the palette */
+  color: #A294F9; /* Vibrant purple for text */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -49,25 +53,31 @@ ul {
 }
 
 .header .logo {
-  font-size: 1.8rem;
+  font-family: 'Whisper', cursive;
+  font-size: 4.5rem; /* Larger font size for emphasis */
   font-weight: bold;
-  text-transform: uppercase;
+  color: #A294F9;
+  margin-bottom: 10px;
 }
 
 .header nav ul {
   display: flex;
-  gap: 20px;
+  gap: 15px; /* Reduced gap for compact bookmarks */
 }
 
 .header nav ul li a {
-  color: #fff;
+  font-size: 0.9rem;
+  color: #CDC1FF;
   font-weight: 500;
   padding: 5px 10px;
   border-radius: 5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .header nav ul li a:hover {
-  background: #00796b;
+  background: #E5D9F2;
+  color: #A294F9; 
 }
 
 /* Hero Section */
@@ -313,24 +323,118 @@ ul {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
+
+
 .team-showcase {
-  background: #ffffff;
-  padding: 50px 20px;
+  background-color: #f9fafb; /* Match the webpage's overall background */
+  padding: 60px 20px;
   text-align: center;
 }
 
-.team-showcase .team-card {
-  text-align: center;
-  width: 250px;
-  margin: 0 auto;
+.team-header {
+  margin-bottom: 40px;
 }
 
-.team-showcase .team-card img {
+.team-cards {
+  display: flex;
+  flex-wrap: wrap; /* Allow members to wrap on smaller screens */
+  justify-content: center;
+  gap: 40px; /* Adjust spacing between members */
+  padding: 20px 0;
+}
+
+.team-member {
+  display: flex;
   width: 100%;
-  height: 250px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  max-width: 1200px; /* Full width for larger screens */
+  padding: 20px 40px;
+  margin-bottom: 40px; /* Space between team members */
+  background-color: transparent; /* Remove background */
+  border-radius: 0; /* No rounded corners */
 }
+
+.team-member.left {
+  flex-direction: row-reverse; /* Image on the left for first and third member */
+}
+
+.team-member.right {
+  flex-direction: row; /* Image on the right for second member */
+}
+
+.team-image {
+  width: 300px; /* Increased image size */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%; /* Keep images circular */
+  margin-right: 30px;
+  margin-left: 30px; /* Adjusted to create consistent space */
+}
+
+.team-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding-left: 30px; /* Push text a little more to the left */
+  max-width: 650px; /* Limit the width for text */
+  margin-left: 20px; /* Add some left margin for spacing */
+}
+
+.team-details h3 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem; /* Larger font size */
+  color: #004d40;
+  font-weight: bold; /* Bold font for heading */
+}
+
+.team-details h2 {
+  margin: 10px 0; /* Space below the name */
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600; /* Slightly bold */
+}
+
+.team-details p {
+  margin: 0;
+  font-size: 1.2rem; /* Increased font size */
+  color: #555;
+  line-height: 1.6; /* Increased line height for better readability */
+}
+
+@media (max-width: 768px) {
+  .team-cards {
+    flex-direction: column; /* Stack team members on smaller screens */
+    align-items: center;
+  }
+
+  .team-member {
+    max-width: 90%; /* Make team members slightly smaller on mobile */
+    padding: 20px;
+  }
+
+  .team-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .team-details h3 {
+    font-size: 2rem;
+  }
+
+  .team-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .team-details p {
+    font-size: 1rem;
+  }
+}
+
+
+
+
 
 .blog-section .blog-cards {
   display: flex;

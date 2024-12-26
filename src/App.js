@@ -16,6 +16,7 @@ const App = () => {
   );
 };
 
+
 const Header = () => {
   return (
     <header className="header">
@@ -23,7 +24,7 @@ const Header = () => {
       <nav>
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#team">Meet the Team</a></li>
+          <li><a href="#team">Team</a></li>
           <li><a href="#blog">Blog</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -32,6 +33,9 @@ const Header = () => {
     </header>
   );
 };
+
+
+
 
 const HeroSection = () => {
   return (
@@ -86,27 +90,39 @@ const VideoArea = () => {
 const TeamShowcase = () => {
   return (
     <section id="team" className="team-showcase">
-      <h2>Meet Our Team</h2>
+      <div className="team-header">
+        <h1>Meet our team!</h1>
+      </div>
       <div className="team-cards">
-        <div className="team-card">
-          <img src="https://via.placeholder.com/250" alt="Aditya" />
-          <h3>Aditya</h3>
-          <p>Founder and Head Trainer</p>
+        <div className="team-member left">
+        <img src="/images/aditya_pfp.png" alt="Aditya" className="team-image" />
+          <div className="team-details">
+            <h3>Aditya</h3>
+            <h2>Founder and Head Trainer</h2>
+            <p>Certified Dog Trainer and behaviorist.</p>
+          </div>
         </div>
-        <div className="team-card">
-          <img src="https://via.placeholder.com/250" alt="Team Member" />
-          <h3>Sarah</h3>
-          <p>Canine Specialist</p>
+        <div className="team-member right">
+          <img src="https://via.placeholder.com/300" alt="Meghan" className="team-image" />
+          <div className="team-details">
+            <h3>Meghan</h3>
+            <p>Canine Specialist</p>
+          </div>
         </div>
-        <div className="team-card">
-          <img src="https://via.placeholder.com/250" alt="Team Member" />
-          <h3>John</h3>
-          <p>Behavior Analyst</p>
+        <div className="team-member left">
+          <img src="https://via.placeholder.com/300" alt="John" className="team-image" />
+          <div className="team-details">
+            <h3>John</h3>
+            <p>Behavior Analyst</p>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+
+
 
 const BlogSection = () => {
   return (
