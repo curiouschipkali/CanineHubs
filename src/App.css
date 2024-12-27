@@ -48,8 +48,6 @@ body {
   background: #F5EFFF;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 20px 0 30px 0;  /* Increased bottom padding */
-  height: 140px;  /* Increased to accommodate new padding */
 }
 
 .header-container {
@@ -65,22 +63,20 @@ body {
 
 .header.collapsed {
   height: 90px;  /* Increased collapsed height */
-  padding: 10px 0 15px 0;  /* Added bottom padding when collapsed */
 }
 
 .header .logo {
   font-family: 'Whisper', cursive;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: #A294F9;
-  margin-bottom: 20px;  /* Increased bottom margin */
+  /* margin-bottom: 20px; Removed bottom margin */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
 }
 
 .header.collapsed .logo {
   font-size: 2.5rem;
-  margin-bottom: 12px;  /* Increased collapsed bottom margin */
 }
 
 .header nav {
@@ -103,7 +99,7 @@ body {
 
 .header nav ul li a {
   font-size: 0.9rem;
-  color: #CDC1FF;
+  color: #8276b4;
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 5px;
@@ -123,9 +119,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .header-container {
-    padding: 0 20px;
-  }
   
   .header nav ul {
     gap: 15px;
@@ -152,7 +145,7 @@ body {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: 120px 40px 80px;
+  padding: 70px 40px 80px;
   position: relative;
 }
 
@@ -1090,7 +1083,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .header {
-    padding: 20px;
+    padding: 0px;
   }
 
   .hero-section {
