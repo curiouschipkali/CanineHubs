@@ -527,16 +527,17 @@ line-height: 1.6;
   height: auto;
   display: block;
   border-radius: 16px;
-  background: #2D2656;
+  background: none;
+  filter: brightness(1.9) contrast(1.1);
 }
 
 /* Video controls styling */
 .video-wrapper video::-webkit-media-controls {
-  background-color: rgba(45, 38, 86, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .video-wrapper video::-webkit-media-controls-panel {
-  background-color: rgba(45, 38, 86, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Video Section Responsive */
