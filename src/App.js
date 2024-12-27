@@ -152,6 +152,36 @@ const ServicesWithImages = () => {
 };
 
 const VideoArea = () => {
+  const videoRef = React.useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videoRef.current.play();
+        } else {
+          videoRef.current.pause();
+        }
+      });
+    }, options);
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section className="video-area">
       <div className="video-content">
@@ -174,7 +204,13 @@ const VideoArea = () => {
           </div>
         </div>
         <div className="video-wrapper">
-          <video controls poster="/images/video-thumbnail.jpg">
+          <video 
+            ref={videoRef}
+            controls 
+            muted
+            playsInline
+            poster="/images/video-thumbnail.jpg"
+          >
             <source src="/videos/adiblog1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
