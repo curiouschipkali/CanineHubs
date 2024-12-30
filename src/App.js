@@ -390,11 +390,11 @@ const Footer = () => {
             </li>
             <li>
               <i className="fas fa-phone"></i>
-              <a href="tel:+1234567890">+91 (123) 456-7890</a>
+              <a href="tel:+1234567890">+91 9611188219</a>
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i>
-              <span>Mumbai, Maharashtra</span>
+              <span>Bangalore, Karnataka</span>
             </li>
             <li>
               <i className="far fa-clock"></i>
