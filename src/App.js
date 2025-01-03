@@ -384,6 +384,83 @@ const Testimonials = () => {
   );
 };
 
+
+
+const Slideshow = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slideData = [
+    { 
+      url: '/images/image1.jpg', 
+      caption: 'Professional Training Sessions',
+      description: 'Personalized attention for every dog'
+    },
+    { 
+      url: '/images/image2.jpg', 
+      caption: 'Group Training Classes',
+      description: 'Socialization in a controlled environment'
+    },
+    { 
+      url: '/images/image3.jpg', 
+      caption: 'Behavior Modification',
+      description: 'Transform challenging behaviors with proven methods'
+    }
+  ];
+
+  const goToNextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % slideData.length);
+  };
+
+  const goToPreviousSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + slideData.length) % slideData.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(goToNextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="slideshow-section">
+      <div className="slideshow-container">
+        {slideData.map((slide, index) => (
+          <div
+            key={index}
+            className={`slide ${index === currentIndex ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${slide.url})` }}
+          >
+            <div className="slide-content">
+              <h2>{slide.caption}</h2>
+              <p>{slide.description}</p>
+            </div>
+          </div>
+        ))}
+
+        <button className="slide-nav prev" onClick={goToPreviousSlide}>
+          <i className="fas fa-chevron-left"></i>
+        </button>
+        <button className="slide-nav next" onClick={goToNextSlide}>
+          <i className="fas fa-chevron-right"></i>
+        </button>
+
+        <div className="slide-indicators">
+          {slideData.map((_, index) => (
+            <span
+              key={index}
+              className={`indicator ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+            ></span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -485,6 +562,7 @@ const App = () => {
       <TeamShowcase />
       <BlogSection />
       <Testimonials />
+      <Slideshow />
       <Footer />
     </div>
   );
