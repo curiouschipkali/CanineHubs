@@ -144,6 +144,8 @@ color: #A294F9;
   padding: 10px;
   font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure the calendar takes up the full width */
+  overflow: hidden;
 }
 
 /* Navigation Bar Styling */
@@ -226,6 +228,51 @@ color: #A294F9;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .react-calendar {
+    padding: 8px;
+  }
+
+  .react-calendar__navigation {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  .react-calendar__navigation button {
+    font-size: 14px;
+  }
+
+  .react-calendar__tile {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .react-calendar__month-view__days {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .react-calendar {
+    padding: 6px;
+  }
+
+  .react-calendar__navigation {
+    padding: 6px;
+  }
+
+  .react-calendar__tile {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+
+
 
 /* Hero Section */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap');
