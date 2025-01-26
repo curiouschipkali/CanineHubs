@@ -2,6 +2,11 @@ import React, { useEffect } from 'react';
 import "./App.css";
 import { useState } from 'react'; 
 import { Home, Video, Users, BookOpen, Dog } from 'lucide-react';
+import Calendar from "react-calendar";
+
+
+
+
 
 const Header = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -48,55 +53,213 @@ const Header = () => {
     );
   };
   
+  
+  
+  
+  
+  
+  const CalendarComponent = () => {
+    const [bookedDates, setBookedDates] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    const fetchBookedDates = async (start, end) => {
+      console.log("Fetching booked dates:", {
+        timeMin: start.toISOString(),
+        timeMax: end.toISOString(),
+      });
+  
+      setLoading(true);
+      setError(null);
+  
+      try {
+        const timeMin = start.toISOString();
+        const timeMax = end.toISOString();
+  
+        const backendUri = process.env.REACT_APP_BACKEND_URI; // Ensure BACKEND_URI is set in your environment variables
 
-  const HeroSection = () => {
+        const response = await fetch(`${backendUri}/events`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ timeMin, timeMax }),
+          timeout: 10000, // 10-second timeout
+        });
+
+        console.log("Response status:", response.status);
+  
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("Server error response:", errorText);
+          throw new Error(`Failed to fetch booked dates: ${errorText}`);
+        }
+  
+        const data = await response.json();
+        console.log("Received events:", data);
+  
+        // Extract booked dates
+        const validDates = data.map((event) => new Date(event.start?.dateTime || event.start?.date));
+        setBookedDates(validDates);
+      } catch (error) {
+        console.error("Error fetching booked dates:", error);
+        setError(error.message);
+        setBookedDates([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      const firstDay = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+      const lastDay = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+      fetchBookedDates(firstDay, lastDay);
+    }, []);
+  
     return (
-      <section id="hero" className="hero-component">
-        <div className="hero-content">
-          <div className="hero-text-content">
-            <h1 className="hero-title">
-              Professional Dog Training 
-              <span className="title-accent">That Delivers Results</span>
-            </h1>
-            <p className="tagline">Transform Your Dog's Potential with Expert Training</p>
-            <div className="hero-description">
-              <p className="main-text">
-                At Canine Hub, we combine proven methodologies with personalized attention 
-                to develop well-behaved, confident, and happy companions. Our expert-led 
-                programs are designed to create lasting behavioral improvements.
-              </p>
-              <div className="features">
-                <div className="feature-item">
-                  <span className="feature-icon">•</span>
-                  <span>Research-Based Training Methods</span>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">•</span>
-                  <span>Certified Professional Trainers</span>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">•</span>
-                  <span>Customized Development Plans</span>
-                </div>
-                <div className="feature-item">
-                  <span className="feature-icon">•</span>
-                  <span>Proven Track Record of Success</span>
-                </div>
-              </div>
-              <button className="cta-button">
-                Schedule a Consultation
-              </button>
-            </div>
-          </div>
-          <div className="hero-image-wrapper">
-            <img src="/images/goldenpuppy.png" alt="Professional Dog Training" className="dog-image" />
-          </div>
-        </div>
-      </section>
+      <div>
+        {loading && <p>Loading booked dates...</p>}
+        {error && <p style={{ color: "red" }}>Error: {error}</p>}
+  
+        <Calendar
+          tileClassName={({ date, view }) => {
+            if (view === "month") {
+              // Check if the date is booked
+              const isBooked = bookedDates.some(
+                (bookedDate) => bookedDate.toDateString() === date.toDateString()
+              );
+              if (isBooked) {
+                return "react-calendar__tile--hasActive";
+              }
+            }
+            return "";
+          }}
+          tileDisabled={({ date, view }) => {
+            if (view === "month") {
+              // Disable the tile if the date is booked
+              return bookedDates.some(
+                (bookedDate) => bookedDate.toDateString() === date.toDateString()
+              );
+            }
+            return false;
+          }}
+        />
+  
+        <button
+          style={{
+            backgroundColor: "#8a70ff",
+            color: "white",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            fontSize: "16px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            marginTop: "20px",
+          }}
+          onClick={() =>
+            window.open(
+              "https://wa.me/your-phone-number",
+              "_blank",
+              "noopener,noreferrer"
+            )
+          }
+        >
+          Book A Slot with Us Now!
+        </button>
+      </div>
     );
   };
   
   
+
+  
+  const ConsultationModal = ({ isOpen, onClose }) => {
+    if (!isOpen) return null;
+
+    return (
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <button className="modal-close" onClick={onClose}>×</button>
+                <h2>Schedule a Consultation</h2>
+                <CalendarComponent />
+            </div>
+        </div>
+    );
+};
+
+const HeroSection = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openConsultationModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeConsultationModal = () => {
+        setIsModalOpen(false);
+    };
+
+    return (
+        <>
+            <section id="hero" className="hero-component">
+                <div className="hero-content">
+                    <div className="hero-text-content">
+                        <h1 className="hero-title">
+                            Professional Dog Training 
+                            <span className="title-accent">That Delivers Results</span>
+                        </h1>
+                        <p className="tagline">Transform Your Dog's Potential with Expert Training</p>
+                        <div className="hero-description">
+                            <p className="main-text">
+                                At Canine Hub, we combine proven methodologies with personalized attention 
+                                to develop well-behaved, confident, and happy companions. Our expert-led 
+                                programs are designed to create lasting behavioral improvements.
+                            </p>
+                            <div className="features">
+                                <div className="feature-item">
+                                    <span className="feature-icon">•</span>
+                                    <span>Research-Based Training Methods</span>
+                                </div>
+                                <div className="feature-item">
+                                    <span className="feature-icon">•</span>
+                                    <span>Certified Professional Trainers</span>
+                                </div>
+                                <div className="feature-item">
+                                    <span className="feature-icon">•</span>
+                                    <span>Customized Development Plans</span>
+                                </div>
+                                <div className="feature-item">
+                                    <span className="feature-icon">•</span>
+                                    <span>Proven Track Record of Success</span>
+                                </div>
+                            </div>
+                            <button 
+                                className="cta-button" 
+                                onClick={openConsultationModal}
+                            >
+                                Schedule a Consultation
+                            </button>
+                        </div>
+                    </div>
+                    <div className="hero-image-wrapper">
+                        <img 
+                            src="/images/goldenpuppy.png" 
+                            alt="Professional Dog Training" 
+                            className="dog-image" 
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <ConsultationModal 
+                isOpen={isModalOpen} 
+                onClose={closeConsultationModal} 
+            />
+        </>
+    );
+};
+
+
 
 const ServicesWithImages = () => {
   return (
@@ -553,7 +716,15 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
+
+
+
+
+
+  
+
   return (
+   
     <div>
       <Header />
       <HeroSection />
@@ -564,6 +735,7 @@ const App = () => {
       <Testimonials />
       <Slideshow />
       <Footer />
+
     </div>
   );
 };
