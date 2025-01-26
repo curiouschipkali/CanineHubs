@@ -120,7 +120,7 @@ const Header = () => {
       <div>
         {loading && <p>Loading booked dates...</p>}
         {error && <p style={{ color: "red" }}>Error: {error}</p>}
-  
+        <div className="calendar-container">
         <Calendar
           tileClassName={({ date, view }) => {
             if (view === "month") {
@@ -144,6 +144,7 @@ const Header = () => {
             return false;
           }}
         />
+        </div>
   
         <button
           style={{
