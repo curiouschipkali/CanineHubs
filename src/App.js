@@ -10,6 +10,7 @@ import Calendar from "react-calendar";
 
 const Header = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     
     useEffect(() => {
       let lastScrollTop = 0;
@@ -36,17 +37,24 @@ const Header = () => {
       window.addEventListener('scroll', handleScroll, { passive: true });
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
   
     return (
       <header className={`header ${isCollapsed ? 'collapsed' : ''}`}>
         <div className="logo">Canine Hub</div>
-        <nav>
+        <button className="mobile-menu-button" onClick={toggleMobileMenu}>
+          <i className="fas fa-bars"></i>
+        </button>
+        <nav className={isMobileMenuOpen ? 'mobile-menu-open' : ''}>
           <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
+            <li><a href="#team" onClick={() => setIsMobileMenuOpen(false)}>Team</a></li>
+            <li><a href="#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
+            <li><a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</a></li>
+            <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a></li>
           </ul>
         </nav>
       </header>
@@ -120,7 +128,7 @@ const Header = () => {
       <div>
         {loading && <p>Loading booked dates...</p>}
         {error && <p style={{ color: "red" }}>Error: {error}</p>}
-        <div className="calendar-container">
+  
         <Calendar
           tileClassName={({ date, view }) => {
             if (view === "month") {
@@ -144,7 +152,6 @@ const Header = () => {
             return false;
           }}
         />
-        </div>
   
         <button
           style={{
@@ -741,4 +748,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;
