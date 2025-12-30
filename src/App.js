@@ -228,7 +228,7 @@ const HeroSection = () => {
                                 </div>
                                 <div className="feature-item">
                                     <span className="feature-icon">•</span>
-                                    <span>Certified Professional Trainers</span>
+                                    <span>Certified Professional Trainer</span>
                                 </div>
                                 <div className="feature-item">
                                     <span className="feature-icon">•</span>
