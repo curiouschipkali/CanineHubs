@@ -276,43 +276,39 @@ const ServicesWithImages = () => {
         
         <div className="services-grid">
           <div className="service-card">
-            <div className="service-icon-wrapper">
-              <Home className="service-icon" />
-            </div>
-            <h3>Home Visits</h3>
-            <p>Personalized training sessions in your home environment, where your pet feels most comfortable. Our experts work directly with you to address specific behavioral challenges and establish positive routines.</p>
+            <h3>1. Board & Train Program</h3>
+            <h4>Intensive, structured training with daily practice and routine.</h4>
+            <p>Your dog stays with me in a controlled environment where I work on obedience, manners, leash walking, confidence building, and specific behaviour issues. Ideal for busy owners or dogs needing focused, consistent training.</p>
           </div>
 
           <div className="service-card">
-            <div className="service-icon-wrapper">
-              <Video className="service-icon" />
-            </div>
-            <h3>Online 1-1 Sessions</h3>
-            <p>Flexible virtual consultations that fit your schedule. Get professional guidance and training support from anywhere, with personalized attention to your pet's specific needs.</p>
+            <h3>2. One-on-One Home Training</h3>
+            <h4>Personalised sessions at your home with hands-on coaching.</h4>
+            <p>I guide both you and your dog through customized training plans covering obedience, recall, leash control, socialisation, and problem behaviours—designed to fit your routine and lifestyle.</p>
           </div>
 
           <div className="service-card">
-            <div className="service-icon-wrapper">
-              <BookOpen className="service-icon" />
-            </div>
-            <h3>Online/Offline Webinars</h3>
-            <p>Join our educational sessions covering various aspects of pet care and training. Learn from experts through interactive workshops designed to deepen your understanding of canine behavior.</p>
+            <h3>3. Puppy Training Program</h3>
+            <h4>Build the perfect foundation from Day 1.</h4>
+            <p>Covers toilet training, biting, socialisation, crate training, name recall, engagement, and essential puppy manners to prevent future behaviour issues.</p>
           </div>
 
           <div className="service-card">
-            <div className="service-icon-wrapper">
-              <Users className="service-icon" />
-            </div>
-            <h3>Group Socialization Sessions</h3>
-            <p>Structured group sessions where your pet can develop essential social skills. Our controlled environment ensures safe and positive interactions with other dogs.</p>
+            <h3>4. Behavioural Correction</h3>
+            <h4>Targeted training for issues like barking, reactivity, anxiety, or aggression.</h4>
+            <p>I assess the root cause and create a clear, structured plan to reshape your dog's behaviour and help you manage situations confidently.</p>
           </div>
 
           <div className="service-card">
-            <div className="service-icon-wrapper">
-              <Dog className="service-icon" />
-            </div>
-            <h3>Training Your Pet Group Course</h3>
-            <p>Comprehensive training program designed specifically for pet parents. Learn professional techniques and strategies to become a more effective trainer for your furry friend.</p>
+            <h3>5. Group Training Classes</h3>
+            <h4>Social learning in a controlled, distraction-based environment.</h4>
+            <p>Great for building confidence, improving recall around distractions, and polishing obedience with other dogs and people around.</p>
+          </div>
+
+          <div className="service-card">
+            <h3>6. Online Consultations</h3>
+            <h4>Expert guidance for both obedience training and behaviour correction—no matter where you are.</h4>
+            <p>I provide structured, step-by-step solutions for issues like leash pulling, recall, puppy biting, barking, anxiety, reactivity, and more. Each session includes personalised assessments, training plans, and follow-ups to ensure steady progress at home.</p>
           </div>
         </div>
       </div>

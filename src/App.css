@@ -549,7 +549,7 @@ animation: fadeInUp 0.8s ease-out 0.2s forwards;
 
 .services-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+grid-template-columns: repeat(3, 1fr);
 gap: 30px;
 opacity: 0;
 animation: fadeInUp 0.8s ease-out 0.4s forwards;
@@ -594,8 +594,15 @@ color: #A294F9;
 .service-card h3 {
 font-size: 1.5rem;
 color: #2D2656;
-margin-bottom: 16px;
+margin-bottom: 12px;
 font-weight: 600;
+}
+
+.service-card h4 {
+font-size: 1.1rem;
+color: #2D2656;
+margin-bottom: 16px;
+font-weight: 500;
 }
 
 .service-card p {
@@ -1255,6 +1262,12 @@ to {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+.services-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+
 @media (max-width: 768px) {
 .header {
   padding: 0px;
