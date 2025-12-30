@@ -400,7 +400,7 @@ const TeamShowcase = () => {
               <p>Certified Dog Trainer and behaviorist.</p>
             </div>
           </div>
-          <div className="team-member right">
+         /* <div className="team-member right">
             <img src="https://via.placeholder.com/300" alt="Meghan" className="team-image" />
             <div className="team-details">
               <h3>Meghan</h3>
@@ -414,6 +414,7 @@ const TeamShowcase = () => {
               <p>Behavior Analyst</p>
             </div>
           </div>
+          */
         </div>
       </section>
     );
