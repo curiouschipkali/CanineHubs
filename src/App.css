@@ -1415,6 +1415,10 @@ animation: fadeInUp 0.8s ease-out 0.8s forwards;
 animation: fadeInUp 0.8s ease-out 1s forwards;
 }
 
+.service-card:nth-child(6) {
+animation: fadeInUp 0.8s ease-out 1.2s forwards;
+}
+
 /* Team animations */
 .team-member:nth-child(1) {
 animation: fadeInLeft 0.8s ease-out 0.2s forwards;
