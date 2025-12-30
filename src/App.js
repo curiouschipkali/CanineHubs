@@ -213,15 +213,13 @@ const HeroSection = () => {
                 <div className="hero-content">
                     <div className="hero-text-content">
                         <h1 className="hero-title">
-                            Professional Dog Training 
-                            <span className="title-accent">That Delivers Results</span>
+                            Training That Makes Life Easier
+                            <span className="title-accent">For You and Your Dog.</span>
                         </h1>
                         <p className="tagline">Transform Your Dog's Potential with Expert Training</p>
                         <div className="hero-description">
                             <p className="main-text">
-                                At Canine Hub, we combine proven methodologies with personalized attention 
-                                to develop well-behaved, confident, and happy companions. Our expert-led 
-                                programs are designed to create lasting behavioral improvements.
+                                At Canine Hub, I apply proven, science-backed methods to bring out the best in every dog I train. With structured, expert-led programs, I ensure lasting behaviour transformation—not temporary fixes.
                             </p>
                             <div className="features">
                                 <div className="feature-item">
